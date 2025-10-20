@@ -1,0 +1,9 @@
+{
+    "offline":{
+        "host":"localhost",
+        "name":"e_courrier",
+        "user":"root",
+        "pwd":""
+    },
+    "launch":"offline"
+}
