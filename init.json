@@ -3,7 +3,8 @@
         "host":"localhost",
         "name":"e_courrier",
         "user":"root",
-        "pwd":""
+        "pwd":"",
+        "charset":"utf8mb4"
     },
     "launch":"offline"
 }
