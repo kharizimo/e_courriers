@@ -30,21 +30,23 @@ $menu=[
 
 ];
 
+if(isset($_SESSION["user-id"])){
+    $sql="select user.*,service.lib service_lib from user join service on user.service_id=service.id where user.id={$_SESSION['user-id']}";
+    $user=(object) $cn->query($sql)->fetch(PDO::FETCH_ASSOC);
+}
+
 
 $url=is_file("pages/$_c.php")?"pages/$_c.php":"pages/404.php";
 ob_start();require_once $url;
 $content=ob_get_clean();
 
-if($auth??true){
-    if(isset($_SESSION["user-id"])){
-        $sql="select user.*,service.lib service_lib from user join service on user.service_id=service.id where user.id={$_SESSION['user-id']}";
-        $user=(object) $cn->query($sql)->fetch(PDO::FETCH_ASSOC);
-    }
-    else{
-        header('location:login');
-        exit;
-    }
+$auth??=true;
+if($auth && !isset($_SESSION["user-id"])){
+    header('location:login');
+    exit;
 }
+
+
 
 $url='components/sidebar.php';
 $sidebar= '';

@@ -7,6 +7,7 @@ $auth=false;
         <span class="fa fa-user-circle fa-3x"></span><br>
         Connexion
     </h3>
+    <div class="text-center text-danger text-bold"><?=isset($err)?'Erreur connexion':'' ?></div>
     <div class="form-group">
         <label for="">Email</label>
         <input name="email" type="text" class="form-control">
