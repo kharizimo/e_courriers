@@ -51,9 +51,10 @@
 <h2 class="text-center display-4 mt-5">Recherche</h2>
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <form action="simple-results.html">
+        <form action="search">
             <div class="input-group">
-                <input type="search" class="form-control form-control-lg" placeholder="Tapez votre mot-clé . . .">
+              <input type="hidden" name="_a" value="tout">
+                <input type="search" name="_q" class="form-control form-control-lg" placeholder="Tapez votre mot-clé . . .">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-lg btn-default">
                         <i class="fa fa-search"></i>

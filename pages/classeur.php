@@ -1,29 +1,40 @@
 <?php 
-$rows=$cn->query("select * from classeur")->fetchAll(PDO::FETCH_ASSOC);
+$classeurs=$cn->query("select * from classeur")->fetchAll(PDO::FETCH_ASSOC);
+$services=$cn->query("select * from service")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="row">
-    <div class="col-md-6"><div class="card">
-        <div class="card-header"><div class="card-tools"><button class="btn btn-sm btn-primary"><span class="fa fa-plus"></span></button></div></div>
-        
-        <div class="card-body p-0"><table class="table table-sm">
-            <?php foreach($rows as $r): ?>
-            <tr>
-                <td>
-                    <span class="fa fa-angle-right text-dark"></span>
-                    <span class="fa fa-folder text-warning"></span>
-                    <a href=""><?=$r['lib'] ?></a>
-                </td>
-                <td width="1%">
-                    <a href="" class="btn-link pl-2"><span class="fa fa-times text-danger"></span></a>
-                </td>
-            </tr>
-            <?php endforeach?>
-        </table></div>
+    <div class="col-md-4"><div class="card card-body">
+        <form action="">
+            <div class="form-group">
+                <label for="">Service</label>
+                <select name="" id="" class="form-control form-control-sm"><?= 
+                array_reduce($services,function($carry,$item){
+                    return $carry."<option value=>{$item['lib']}</option>";
+                },'')
+                ?></select>
+            </div>
+            <div class="form-group">
+                <label for="">Classeur</label>
+                <select name="" id="" class="form-control form-control-sm"><?= 
+                array_reduce($classeurs,function($carry,$item){
+                    return $carry."<option value=>{$item['lib']}</option>";
+                },'')
+                ?></select>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
+                <button type="submit" class="btn btn-primary btn-sm">Modifier</button>
+            </div>
+        </form>
     </div></div>
     <div class="col"><div class="card">
-        <div class="card-header"><div class="card-tools">
-            <button class="btn btn-sm btn-primary"><span class="fa fa-plus"></span></button>
-        </div></div>
+        <div class="card-header">
+            <div class="card-tools"><select name="" id="" class="form-control form-control-sm">
+                <option>Page 1</option>
+                <option>Page 2</option>
+                <option>Page 3</option>
+            </select></div>
+        </div>
         <div class="card-body p-0"><table class="table table-sm">
             <tr>
                 <td width="1%"><a href="#"><span class="fa fa-file"></span></a></td>

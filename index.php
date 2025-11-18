@@ -13,10 +13,10 @@ $title = 'Dashboard';
 $menu=[
     ['title'=>'Accueil','url'=>'/'],
     ['title'=>'Courriers','children'=> [
-        ['title'=> 'Nouveau courrier','url'=> 'courrier-nouveau'],
-        ['title'=> 'Courriers reçus','url'=> 'courrier-recu'],
-        ['title'=> 'Courriers expédiés','url'=> 'courrier-expedie'],
+        ['title'=> 'Nouveau courrier','url'=> 'courrier-form'],
+        ['title'=> 'Mes Courriers','url'=> 'courrier-list'],
     ]],
+    ['title'=>'Recherche','url'=>'search'],
     ['title'=>'Classeur','url'=>'classeur'],
     ['title'=>'Utilisateurs','children'=>[
         ['title'=> 'Nouveau','url'=> 'user-form'],

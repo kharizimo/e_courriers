@@ -16,4 +16,5 @@ try{
 extract($_REQUEST);
 $_c??='index';
 $_a??='';
+$_q??='';
 $id??='0';
