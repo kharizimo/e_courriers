@@ -1,10 +1,16 @@
+<?php 
+$cRecu=$cn->query("SELECT COUNT(*) c FROM courrier")->fetch(PDO::FETCH_NUM)[0];
+$cEnvoye=$cn->query("SELECT COUNT(*) c FROM courrier")->fetch(PDO::FETCH_NUM)[0];
+$cEnCours=$cn->query("SELECT COUNT(*) c FROM courrier")->fetch(PDO::FETCH_NUM)[0];
+$cCloture=$cn->query("SELECT COUNT(*) c FROM courrier")->fetch(PDO::FETCH_NUM)[0];
+?>
 <div class="row">
   <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box">
       <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Courriers reçus</span>
-        <span class="info-box-number"><?= 10?></span>
+        <span class="info-box-number"><?= $cRecu ?></span>
       </div>
       <!-- /.info-box-content -->
     </div>
@@ -16,7 +22,7 @@
       <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Courriers envoyés</span>
-        <span class="info-box-number">100</span>
+        <span class="info-box-number"><?= $cEnvoye ?></span>
       </div>
       <!-- /.info-box-content -->
     </div>
@@ -30,7 +36,7 @@
       <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Courriers en cours</span>
-        <span class="info-box-number">760</span>
+        <span class="info-box-number"><?= $cEnCours ?></span>
       </div>
       <!-- /.info-box-content -->
     </div>
@@ -42,7 +48,7 @@
       <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Courriers cloturés</span>
-        <span class="info-box-number">2,000</span>
+        <span class="info-box-number"><?= $cCloture ?></span>
       </div>
     </div>
   </div>

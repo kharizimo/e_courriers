@@ -8,6 +8,9 @@
 
   <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+  <script>
+    const modal=undefined
+  </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -39,5 +42,11 @@
 <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
+<script>
+  modal=(fct)=>{
+    if(fct!==undefined){fct()}
+    $('#modal').modal('show')
+  }
+</script>
 </body>
 </html>

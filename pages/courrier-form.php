@@ -1,12 +1,25 @@
+<?php 
+if($id){
+
+}
+?>
 <div class="row">
     <div class="col-md-8">
         <div class="card card-body">
             <form class="form">
+                <input type="hidden" id="mvt" name="mvt" value="">
             <div class="row">
                 <div class="col-md">
                     <div class="form-group">
                         <label for="">Année</label>
-                        <select name="" id="" class="form-control"></select>
+                        <select name="annee" id="annee" class="form-control">
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md">
@@ -18,7 +31,13 @@
                 <div class="col-md">
                     <div class="form-group">
                         <label for="">Nature</label>
-                        <select name="" id="" class="form-control"></select>
+                        <select name="" id="" class="form-control"><?=
+                        array_reduce(
+                            $cn->query("select * from nature")->fetchAll(PDO::FETCH_ASSOC),function($carry,$item){
+                                return $carry.'<option value="'.$item['id'].'">'.$item['lib'].'</option>';
+                            },''
+                            )
+                        ?></select>
                     </div>
                 </div>
             </div>
@@ -36,11 +55,21 @@
             <div class="row">
                 <div class="col-md"><div class="form-group">
                     <label for="">Classeur</label>
-                    <select name="" id="" class="form-control"></select>
+                    <select name="" id="" class="form-control"><?=array_reduce(
+                        $cn->query('select * from classeur')->fetchAll(PDO::FETCH_ASSOC),
+                        function($carry,$item){
+                            return $carry.'<option value="'.$item['id'].'">'.$item['lib'].'</option>';
+                        },''
+                    )?></select>
                 </div></div>
                 <div class="col"><div class="form-group">
                     <label for="">Etat</label>
-                    <select name="" id="" class="form-control"></select>
+                    <select name="" id="" class="form-control"><?=array_reduce(
+                        ['EN COURS','CLOTURE'],
+                        function($carry,$item){
+                            return $carry.'<option value="'.$item.'">'.$item.'</option>';
+                        },''
+                    )?></select>
                 </div></div>
             </div>
             <div class="form-group">
@@ -95,9 +124,9 @@
     </div>
     <div class="col-md">
         <div class="form-group">
-            <div class="row">
-                <div class="col"><button class="btn btn-lg btn-block btn-success">Envoyé <span class="fa fa-arrow-up"></span></button></div>
-                <div class="col-md-auto"><button class="btn btn-lg btn-block btn-outline-success"> <span class="fa fa-arrow-up"></span></button></div>
+            <div class="row" id="btn-mvt">
+                <div class="col-md"><button data-mvt="ENVOYE" id="btn-envoye" class="btn btn-lg btn-block btn-success">Envoyé <span class="fa fa-arrow-up"></span></button></div>
+                <div class="col-md"><button data-mvt="RECU" id="btn-recu" class="btn btn-lg btn-block btn-outline-success">Reçu <span class="fa fa-arrow-up"></span></button></div>
             </div>
         </div>
         <div class="form-group">
@@ -131,3 +160,16 @@
         </div>
     </div>
 </div>
+<script>
+    const btn_mvt=document.querySelectorAll('#btn-mvt button')
+
+    btn_mvt.forEach(e=>{
+        e.addEventListener('click',()=>{
+            btn_mvt.forEach(ee=>{
+                ee.classList.toggle('btn-success')
+                ee.classList.toggle('btn-outline-success')
+            })
+            document.getElementById('mvt').value=e.dataset.mvt
+        })
+    })
+</script>

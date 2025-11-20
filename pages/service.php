@@ -47,26 +47,15 @@ $services=$cn->query("select * from service")->fetchAll(PDO::FETCH_ASSOC);
     </div></div>
 </div>
 
-<div class="modal fade" id="modal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Ajouter</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form action="">
-                <div class="form-group">
-                    <label for="">Service</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="text-right"><button class="btn btn-success">Proceder</button></div>
-              </form>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
+<?php ob_start()?>
+    <form action="">
+      <div class="form-group">
+          <label for="">Service</label>
+          <input type="text" class="form-control">
       </div>
+      <div class="text-right"><button class="btn btn-success">Proceder</button></div>
+    </form>
+<?php 
+$body=ob_get_clean();
+build_modal($body,'Ajouter','modal');
+?>
